@@ -1,0 +1,23 @@
+{
+  "name": "ppd_twitter_cryptocurrency",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andy92Pac/ppd_twitter_cryptocurrency.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Andy92Pac/ppd_twitter_cryptocurrency/issues"
+  },
+  "homepage": "https://github.com/Andy92Pac/ppd_twitter_cryptocurrency#readme",
+  "dependencies": {
+    "json2csv": "^3.11.5",
+    "node-bittrex-api": "^0.8.2"
+  }
+}
