@@ -42,4 +42,19 @@ tweetByHour = tweet %>%
   summarise(count=n()) %>%
   arrange(date, heure)
 
+tweet.ts = ts(tweetByHour$count, frequency = 24)
+plot(tweet.ts)
+
+btc.filtered = btc %>% 
+  filter(date(T) > "2018-03-06", date(T) < "2018-03-08") %>%
+  select(C, V)
+
+btc.ts = ts(btc.filtered$C, frequency = 24)
+plot(btc.ts)
+
+btc.v.ts = ts(btc.filtered$V, frequency = 24)
+plot(btc.v.ts)
+
+par(mfrow=c(3,1))
+par(mfrow=c(1,1))
 
