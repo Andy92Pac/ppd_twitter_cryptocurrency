@@ -57,3 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
+/scrap_script/node_modules
+/scrap_script/data.csv
+/scrap_script/package-lock.json
+.Rproj.user
