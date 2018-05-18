@@ -58,3 +58,26 @@ plot(btc.v.ts)
 par(mfrow=c(3,1))
 par(mfrow=c(1,1))
 
+
+
+################################################
+################################################
+
+data = cbind(data, h1 = 0, h2 = 0)
+
+for(i in 1:nrow(data)) {
+  if(i == nrow(data)) {
+    data[i,9] = 0
+    data[i-1,10] = 0
+  } 
+  else if(i == nrow(data)-1) {
+    data[i,9] = ifelse(data[i,1] - data[i+1,1]<0,1,0)
+    data[i,10] = 0
+  }
+  else {
+    data[i,9] = ifelse(data[i,1] - data[i+1,1]<0,1,0)
+    data[i,10] = ifelse(data[i,1] - data[i+2,1]<0,1,0)
+  }
+}
+
+data.sub = data[1:62,]
