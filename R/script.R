@@ -58,8 +58,6 @@ plot(btc.v.ts)
 par(mfrow=c(3,1))
 par(mfrow=c(1,1))
 
-
-
 ################################################
 ################################################
 
@@ -80,4 +78,33 @@ for(i in 1:nrow(data)) {
   }
 }
 
-data.sub = data[1:62,]
+head(data)
+
+data.sub = data %>% 
+  filter(market == "USDT-BTC") %>%
+  mutate(date = date(anytime(T)), heure = hour(anytime(T))) %>%
+  arrange(date, heure)
+
+tee = data.frame(date = tot$date1, heure = tot$heure1, only.tot.scaled)
+tee = as.data.frame(tee)
+data.sub = as.data.frame(data.sub)
+j = merge(data.sub, tee, by = c("date", "heure"))
+j = j %>% arrange(date, heure)
+
+#####################################################
+#####################################################
+
+join.data = j
+
+pca.join = PCA(join.data, quanti.sup = c(3,4,5,6,7,9,12), quali.sup = c(1,2,8,10))
+plot.PCA(pca.join, axes = c(1,3), choix = ("var"))
+
+#####################################################
+#####################################################
+
+Y = join.data$h1
+X = join.data[,13:22]
+
+model = glm(Y ~ ., data = X, family = binomial(link = "logit"))
+
+
